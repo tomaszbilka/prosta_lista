@@ -2,6 +2,8 @@ import Test from "@/components/Test";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
+import "./i18n";
+
 export default function App() {
   return (
     <View style={styles.container}>
