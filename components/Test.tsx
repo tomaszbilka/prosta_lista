@@ -15,7 +15,6 @@ const Test = () => {
 
   return (
     <View>
-      <Text>{t("title")}</Text>
       <Text>{t("test", { ns: "test" })}</Text>
       <Button title={locale} onPress={changeLocaleHandler} />
     </View>
