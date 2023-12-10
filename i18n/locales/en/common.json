@@ -1,5 +1,7 @@
 {
   "email": "Email",
+  "emailVerification": "Please check your inbox for email verification!",
+  "hi": "Hi",
   "login": "Login",
   "password": "Password",
   "register": "Register",

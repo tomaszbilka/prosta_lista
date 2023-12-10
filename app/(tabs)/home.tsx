@@ -1,7 +1,9 @@
-import Test from "components/Test";
-import { Link } from "expo-router";
+import { Button, StyleSheet, Text, View } from "react-native";
+import { Link, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+
+import { supabase } from "api/supabase";
+import Test from "components/Test";
 
 const Home = () => {
   return (
@@ -9,9 +11,13 @@ const Home = () => {
       <Test />
       <StatusBar style="auto" />
       <Text>HOME</Text>
-      <Link style={styles.btn} href="auth/login">
-        Go to Login page
-      </Link>
+      <Button
+        title="LOGOUT"
+        onPress={() => {
+          supabase.auth.signOut();
+          router.push("auth/login");
+        }}
+      />
       <Link style={styles.btn} href="/(tabs)/tabOne">
         Go to TAB one
       </Link>

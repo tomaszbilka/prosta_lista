@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { router } from "expo-router";
-
 import { useTranslation } from "react-i18next";
 import {
   View,
@@ -9,17 +8,43 @@ import {
   TextInput,
   Button,
   Pressable,
+  Alert,
 } from "react-native";
 
+import { supabase } from "api/supabase";
+
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { t } = useTranslation();
 
-  const loginHandler = () => {
-    router.replace("/(tabs)/home");
+  const loginHandler = async () => {
+    setIsLoading(true);
+    if (!isLogin) {
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+      });
+      if (error) Alert.alert(error.message);
+      if (!error && !session) Alert.alert(t("emailVerification"));
+    } else {
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+      if (error) Alert.alert(error.message);
+      if (session && !error) router.replace("/(tabs)/home");
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -41,6 +66,7 @@ const Login = () => {
       </View>
       <View style={styles.btn}>
         <Button
+          disabled={isLoading}
           onPress={loginHandler}
           title={isLogin ? t("login") : t("register")}
         />
@@ -48,13 +74,16 @@ const Login = () => {
       <View style={styles.btn}>
         <Button
           color={"#ccc"}
+          disabled={isLoading}
           onPress={() => setIsLogin((prev) => !prev)}
           title={isLogin ? t("register") : t("login")}
         />
       </View>
       {isLogin && (
         <View style={styles.resetBtn}>
-          <Pressable onPress={() => router.replace("auth/resetPassword")}>
+          <Pressable
+            onPress={() => !isLoading && router.replace("auth/resetPassword")}
+          >
             <Text>{t("resetPassword")}</Text>
           </Pressable>
         </View>
