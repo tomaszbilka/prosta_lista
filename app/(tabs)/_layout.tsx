@@ -1,27 +1,25 @@
 import { Tabs } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 const TabsLayout = () => {
+  const { t } = useTranslation();
+
   return (
     <Tabs>
       <Tabs.Screen
         name="home"
         options={{
-          headerTitle: "Home",
-          tabBarLabel: "HOME",
+          headerTitle: t("list"),
+          tabBarLabel: t("list"),
         }}
       />
       <Tabs.Screen
-        name="tabOne"
+        name="settings"
         options={{
-          headerTitle: "One",
-          tabBarLabel: "ONE",
+          headerTitle: t("settings"),
+          tabBarLabel: t("settings"),
         }}
       />
-      <Tabs.Screen
-        name="tabTwo"
-        options={{ headerTitle: "Two", tabBarLabel: "TWO" }}
-      />
-      <Tabs.Screen name="posts" options={{ headerShown: false }} />
     </Tabs>
   );
 };
