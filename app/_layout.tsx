@@ -1,18 +1,23 @@
 import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { colors } from "components/styles/colors";
 
 export default function Layout() {
   return (
-    <Stack
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#000",
-        },
-        headerTintColor: "#fff",
-      }}
-    >
-      {/* <Stack.Screen name="index" options={{ title: "Home" }} /> */}
-      <Stack.Screen name="[missing]" options={{ title: "404" }} />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack>
+    <>
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: colors.black,
+          },
+          headerTintColor: colors.white,
+        }}
+      >
+        {/* <Stack.Screen name="index" options={{ title: "Home" }} /> */}
+        <Stack.Screen name="[missing]" options={{ title: "404" }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack>
+      <StatusBar style="light" />
+    </>
   );
 }

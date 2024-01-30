@@ -1,8 +1,10 @@
 const black = "#000000";
 const white = "#FFFFFF";
+const focus = "#8F6593";
 
-const colors = {
+export const colors = {
   black,
+  focus,
   white,
 
   text: {

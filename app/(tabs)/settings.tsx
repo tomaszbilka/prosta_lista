@@ -14,7 +14,7 @@ const TabOne = () => {
 
   return (
     <View style={styles.container}>
-      <Text>{t("settings")}</Text>
+      <Text style={{ color: "#fff" }}>{t("settings")}</Text>
       <Button title="Go back" onPress={() => router.back()} />
       <Button title={locale} onPress={changeLocaleHandler} />
     </View>
@@ -26,7 +26,7 @@ export default TabOne;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
     alignItems: "center",
     justifyContent: "center",
   },
