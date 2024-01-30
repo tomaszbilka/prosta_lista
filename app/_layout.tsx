@@ -1,5 +1,4 @@
 import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
 import { colors } from "components/styles/colors";
 
 export default function Layout() {
@@ -17,7 +16,6 @@ export default function Layout() {
         <Stack.Screen name="[missing]" options={{ title: "404" }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
-      <StatusBar style="light" />
     </>
   );
 }
