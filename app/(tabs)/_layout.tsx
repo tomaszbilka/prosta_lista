@@ -28,7 +28,7 @@ const TabsLayout = () => {
             <FontAwesome
               name="list-ul"
               size={28}
-              color={focused ? colors.focus : colors.white}
+              color={focused ? colors.accent : colors.white}
             />
           ),
         }}
@@ -42,7 +42,7 @@ const TabsLayout = () => {
             <Ionicons
               name="settings"
               size={28}
-              color={focused ? colors.focus : colors.white}
+              color={focused ? colors.accent : colors.white}
             />
           ),
         }}

@@ -1,10 +1,10 @@
+const accent = "#DE369D";
 const black = "#000000";
 const white = "#FFFFFF";
-const focus = "#8F6593";
 
 export const colors = {
+  accent,
   black,
-  focus,
   white,
 
   text: {
