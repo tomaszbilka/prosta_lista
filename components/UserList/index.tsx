@@ -1,32 +1,62 @@
-import { useState } from "react";
-import { FlatList, TextInput, TouchableOpacity, View } from "react-native";
+import { useEffect, useState } from "react";
+import {
+  FlatList,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Text,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import uuid from "react-native-uuid";
 
 import { colors } from "components/styles/colors";
+import { getItem, storeItem } from "utils/storage";
+import { normalizeListItem } from "./utils";
 import { styles } from "./styles";
 import ListItem from "./ListItem";
 
+import type { TUserList } from "./types";
+
 const UserList = () => {
-  const [list, setList] = useState<{ title: string; id: string }[] | []>([]);
+  const [list, setList] = useState<TUserList | []>([]);
+  const [isLaoding, setIsLoading] = useState(true);
   const [newItem, setNewItem] = useState("");
 
-  const addItemHandler = () => {
-    const newListItem = {
-      title: newItem,
-      id: `${uuid.v4()}`,
-    };
+  const addItemHandler = async () => {
+    const newListItem = normalizeListItem(newItem);
+
+    const storedList = (await getItem("list")) || [];
+    await storeItem("list", `${storedList},${newListItem.title}`);
+
     setList((prev) => [...prev, newListItem]);
     setNewItem("");
   };
 
+  useEffect(() => {
+    getItem("list")
+      .then((data) => {
+        const normalizedData = data
+          .split(",")
+          .map((item: string) => normalizeListItem(item));
+
+        setList(normalizedData || []);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
   return (
     <>
-      <FlatList
-        data={list}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <ListItem title={item.title} />}
-      />
+      {isLaoding ? (
+        <View style={{ flex: 1 }}>
+          <Text style={{ color: "white" }}>Loading...</Text>
+        </View>
+      ) : (
+        <FlatList
+          data={list}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <ListItem title={item.title} />}
+        />
+      )}
+
       <View style={styles.actionContainer}>
         <TextInput
           onChangeText={(newText) => setNewItem(newText)}
