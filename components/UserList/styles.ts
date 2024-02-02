@@ -9,13 +9,17 @@ export const styles = StyleSheet.create({
   },
   addButton: {
     alignContent: "center",
-    backgroundColor: colors.accent,
+    backgroundColor: colors.success,
     borderBottomRightRadius: spacing.xs,
     borderColor: colors.white,
     borderTopRightRadius: spacing.xs,
     borderWidth: 1,
     flex: 1,
     justifyContent: "center",
+  },
+  flatList: {
+    alignSelf: "stretch",
+    marginHorizontal: spacing.xs,
   },
   icon: {
     color: colors.black,
