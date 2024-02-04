@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "prosta_lista",
+    "name": "Prosta Lista",
     "slug": "prosta_lista",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -20,7 +20,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tomaszbilka.prosta_lista"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -28,6 +29,14 @@
     "experiments": {
       "tsconfigPaths": true
     },
-    "plugins": ["expo-router"]
+    "plugins": ["expo-router"],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "e0e919c9-2e66-4723-96e6-446f5dcda0d7"
+      }
+    }
   }
 }
