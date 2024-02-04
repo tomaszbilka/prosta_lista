@@ -4,8 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import type { Dispatch, SetStateAction } from "react";
 
 import { colors } from "components/styles/colors";
-import { denormalizeListItems } from "../utils";
-import { storeItem } from "utils/storage";
+import { deleteItemAction } from "../utils";
 import { styles } from "./styles";
 
 import type { TUserList } from "../types";
@@ -17,19 +16,7 @@ type TProps = {
 };
 
 const ListItem = ({ id, setList, title }: TProps) => {
-  const deleteItemHandler = () => {
-    setList((prev) => {
-      const replaceOldList = async (denormalizeList: string) => {
-        await storeItem("list", denormalizeList);
-      };
-
-      const filteredList = prev.filter((item) => item.id !== id);
-      const denormalizeList = denormalizeListItems(filteredList);
-      replaceOldList(denormalizeList);
-
-      return filteredList;
-    });
-  };
+  const deleteItemHandler = () => deleteItemAction({ id, setList });
 
   return (
     <View style={styles.container}>
