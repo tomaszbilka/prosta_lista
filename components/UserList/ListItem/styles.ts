@@ -3,7 +3,6 @@ import { spacing } from "components/styles/spacing";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  addButton: {},
   container: {
     alignItems: "center",
     borderColor: colors.white,

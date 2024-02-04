@@ -8,9 +8,9 @@ export const normalizeListItem = (label: string) => ({
 });
 
 export const normalizeListItems = (data: string) => {
-  if (data.length === 0) return [];
+  if (!data || data?.length === 0) return [];
 
-  return data.split(",").map((label: string) => ({
+  return data?.split(",").map((label: string) => ({
     title: label,
     id: `${uuid.v4()}`,
   }));

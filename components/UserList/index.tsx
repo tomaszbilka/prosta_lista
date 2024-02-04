@@ -21,7 +21,7 @@ const UserList = () => {
     const newListItem = normalizeListItem(newItem);
 
     const storedList = (await getItem("list")) || [];
-    console.log(list.length);
+
     if (list.length === 0) {
       await storeItem("list", newListItem.title);
     } else {

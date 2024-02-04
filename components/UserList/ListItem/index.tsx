@@ -34,7 +34,7 @@ const ListItem = ({ id, setList, title }: TProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
-      <TouchableOpacity onPress={deleteItemHandler} style={styles.addButton}>
+      <TouchableOpacity onPress={deleteItemHandler}>
         <Feather name="check-square" size={24} color={colors.success} />
       </TouchableOpacity>
     </View>
