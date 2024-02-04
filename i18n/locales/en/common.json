@@ -1,5 +1,7 @@
 {
-  "emptyList": "List jest pusta",
-  "list": "Lista",
-  "settings": "Ustawienia"
+  "emptyList": "The list is empty",
+  "language": "Change language to",
+  "list": "List",
+  "notFound": "Not found",
+  "settings": "Settings"
 }

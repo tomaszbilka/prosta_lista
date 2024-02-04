@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { styles } from "./styles";
 
 const EmptyList = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <View style={styles.empty}>

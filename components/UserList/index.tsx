@@ -21,7 +21,12 @@ const UserList = () => {
     const newListItem = normalizeListItem(newItem);
 
     const storedList = (await getItem("list")) || [];
-    await storeItem("list", `${storedList},${newListItem.title}`);
+    console.log(list.length);
+    if (list.length === 0) {
+      await storeItem("list", newListItem.title);
+    } else {
+      await storeItem("list", `${storedList},${newListItem.title}`);
+    }
 
     setList((prev) => [...prev, newListItem]);
     setNewItem("");
@@ -30,6 +35,7 @@ const UserList = () => {
   useEffect(() => {
     getItem("list").then((data) => {
       const normalizedData = normalizeListItems(data);
+
       setList(normalizedData);
     });
   }, []);

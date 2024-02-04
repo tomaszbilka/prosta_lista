@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { router } from "expo-router";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { View, Text, Button } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
+import CountryFlag from "react-native-country-flag";
+// import flags from "react-native-country-flag/data";
 
 import { styles } from "./styles";
 
@@ -11,14 +12,22 @@ const UserSettings = () => {
 
   const changeLocaleHandler = () => {
     setLocale((prev) => (prev === "pl" ? "en" : "pl"));
-    i18n.changeLanguage(locale);
   };
+
+  useEffect(() => {
+    i18n.changeLanguage(locale);
+  }, [locale]);
 
   return (
     <View style={styles.container}>
-      <Text style={{ color: "#fff" }}>{t("settings")}</Text>
-      <Button title="Go back" onPress={() => router.back()} />
-      <Button title={locale} onPress={changeLocaleHandler} />
+      <Text style={styles.info}>{`${t("language")}:`}</Text>
+      <TouchableOpacity style={styles.button} onPress={changeLocaleHandler}>
+        <CountryFlag
+          isoCode={locale === "pl" ? "gb" : "pl"}
+          size={35}
+          style={styles.flag}
+        />
+      </TouchableOpacity>
     </View>
   );
 };
