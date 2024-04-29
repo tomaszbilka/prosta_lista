@@ -1,11 +1,11 @@
-import { Feather } from "@expo/vector-icons";
-import { Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { StyleSheet, View } from "react-native";
 
 import type { Dispatch, SetStateAction } from "react";
 
-import { colors } from "components/styles/colors";
-import { deleteItemAction } from "../utils";
 import { styles } from "./styles";
+import EditItem from "./EditItem";
+import ShowItem from "./ShowItem";
 
 import type { TUserList } from "../types";
 
@@ -16,14 +16,30 @@ type TProps = {
 };
 
 const ListItem = ({ id, setList, title }: TProps) => {
-  const deleteItemHandler = () => deleteItemAction({ id, setList });
+  const [isEdit, setIsEdit] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{title}</Text>
-      <TouchableOpacity onPress={deleteItemHandler}>
-        <Feather name="check-square" size={24} color={colors.success} />
-      </TouchableOpacity>
+    <View
+      style={StyleSheet.flatten([
+        styles.container,
+        isEdit ? styles.editBorder : null,
+      ])}
+    >
+      {isEdit ? (
+        <EditItem
+          id={id}
+          setIsEdit={setIsEdit}
+          setList={setList}
+          title={title}
+        />
+      ) : (
+        <ShowItem
+          id={id}
+          setIsEdit={setIsEdit}
+          setList={setList}
+          title={title}
+        />
+      )}
     </View>
   );
 };

@@ -2,7 +2,12 @@ import uuid from "react-native-uuid";
 
 import { getItem, storeItem } from "utils/storage";
 
-import type { TAddItemAction, TDeletItemAction, TUserList } from "./types";
+import type {
+  TAddItemAction,
+  TDeletItemAction,
+  TUpdateItemAction,
+  TUserList,
+} from "./types";
 
 export const normalizeListItem = (label: string) => ({
   title: label,
@@ -53,4 +58,14 @@ export const deleteItemAction = ({ id, setList }: TDeletItemAction) => {
 
     return filteredList;
   });
+};
+
+export const updateItemAction = ({
+  id,
+  editedTitle,
+  setList,
+}: TUpdateItemAction) => {
+  setList((prevList) =>
+    prevList.map((item) => (item.id === id ? { id, title: editedTitle } : item))
+  );
 };
