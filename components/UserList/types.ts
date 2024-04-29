@@ -12,3 +12,9 @@ export type TDeletItemAction = {
   id: string;
   setList: Dispatch<SetStateAction<TUserList | []>>;
 };
+
+export type TUpdateItemAction = {
+  id: string;
+  editedTitle: string;
+  setList: Dispatch<SetStateAction<TUserList | []>>;
+};

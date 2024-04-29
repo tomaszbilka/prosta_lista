@@ -15,6 +15,9 @@ export const styles = StyleSheet.create({
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.xxs,
   },
+  editBorder: {
+    borderStyle: "dashed",
+  },
   text: {
     color: colors.white,
     fontSize: 20,
