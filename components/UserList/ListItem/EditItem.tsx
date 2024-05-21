@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Fontisto } from "@expo/vector-icons";
-import { TextInput, TouchableOpacity } from "react-native";
+import { Keyboard, TextInput, TouchableOpacity } from "react-native";
 
 import type { Dispatch, SetStateAction } from "react";
 
@@ -29,6 +29,19 @@ const EditItem = ({ id, setIsEdit, setList, title }: TProps) => {
   useEffect(() => {
     refInput?.current?.focus();
   }, []);
+
+  useEffect(() => {
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        updateItemHandler();
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+    };
+  }, [editedTitle]);
 
   return (
     <>
