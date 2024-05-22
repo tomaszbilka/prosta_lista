@@ -22,7 +22,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.tomaszbilka.prosta_lista",
-      "versionCode": 2
+      "versionCode": 3
     },
     "web": {
       "favicon": "./assets/favicon.png"
