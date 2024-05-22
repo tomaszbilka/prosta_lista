@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import CountryFlag from "react-native-country-flag";
 
 import { styles } from "./styles";
+import Onboarding from "./Onboarding";
 
 const UserSettings = () => {
   const [locale, setLocale] = useState<"pl" | "en">("pl");
@@ -19,14 +20,17 @@ const UserSettings = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.info}>{`${t("language")}:`}</Text>
-      <TouchableOpacity style={styles.button} onPress={changeLocaleHandler}>
-        <CountryFlag
-          isoCode={locale === "pl" ? "gb" : "pl"}
-          size={35}
-          style={styles.flag}
-        />
-      </TouchableOpacity>
+      <View style={styles.language}>
+        <Text style={styles.info}>{`${t("language")}:`}</Text>
+        <TouchableOpacity style={styles.button} onPress={changeLocaleHandler}>
+          <CountryFlag
+            isoCode={locale === "pl" ? "gb" : "pl"}
+            size={35}
+            style={styles.flag}
+          />
+        </TouchableOpacity>
+      </View>
+      <Onboarding />
     </View>
   );
 };
