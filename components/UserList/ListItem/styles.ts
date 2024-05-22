@@ -1,6 +1,8 @@
 import { colors } from "components/styles/colors";
 import { spacing } from "components/styles/spacing";
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const windowWidth = Dimensions.get("window").width;
 
 export const styles = StyleSheet.create({
   container: {
@@ -21,5 +23,6 @@ export const styles = StyleSheet.create({
   text: {
     color: colors.white,
     fontSize: 20,
+    maxWidth: windowWidth - spacing.xll,
   },
 });
