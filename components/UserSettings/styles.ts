@@ -9,22 +9,31 @@ export const styles = StyleSheet.create({
   addImage: {
     height: 100,
   },
+  alert: {
+    color: colors.white,
+    fontSize: 12,
+    marginLeft: spacing.xs,
+  },
+  alertContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   button: {
+    alignContent: "center",
+    alignSelf: "center",
+    justifyContent: "center",
     marginVertical: spacing.base,
     paddingHorizontal: spacing.xs,
     paddingVertical: spacing.sm,
     width: spacing.xll,
-    alignContent: "center",
-    alignSelf: "center",
-    justifyContent: "center",
   },
   container: {
     alignItems: "center",
+    backgroundColor: colors.black,
     flex: 1,
     justifyContent: "flex-start",
-    marginTop: spacing.lg,
-    marginHorizontal: spacing.md,
     paddingBottom: spacing.md,
+    paddingHorizontal: spacing.base,
   },
   editImage: {
     height: 161,
@@ -33,25 +42,29 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
   },
   image: {
-    resizeMode: "center",
+    marginBottom: spacing.lg,
     maxWidth: windowWidth - spacing.md * 2,
+    resizeMode: "center",
   },
   info: {
     color: colors.white,
+    marginBottom: spacing.xs,
+    alignSelf: "flex-start",
   },
   language: {
-    flexDirection: "row",
     alignItems: "center",
+    flexDirection: "row",
     justifyContent: "center",
-    borderBottomWidth: 2,
-    borderColor: colors.white,
+  },
+  lngText: {
+    color: colors.white,
   },
   saveImage: {
     height: 230,
   },
   title: {
-    color: colors.white,
-    fontSize: 18,
+    color: colors.success,
+    fontSize: 22,
     marginBottom: spacing.md,
     marginTop: spacing.lg,
     textAlign: "center",

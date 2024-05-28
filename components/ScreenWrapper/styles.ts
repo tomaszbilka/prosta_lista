@@ -1,11 +1,10 @@
 import { StyleSheet, StatusBar } from "react-native";
 
+import { colors } from "components/styles/colors";
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    paddingTop: StatusBar.currentHeight,
+    backgroundColor: colors.black,
   },
 });
