@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FlatList, TextInput, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import ScreenWrapper from "components/ScreenWrapper";
 
 import { colors } from "components/styles/colors";
 import { getItem } from "utils/storage";
@@ -27,7 +28,7 @@ const UserList = () => {
   }, []);
 
   return (
-    <>
+    <ScreenWrapper>
       <FlatList
         data={list}
         ListEmptyComponent={<EmptyList />}
@@ -49,7 +50,7 @@ const UserList = () => {
           <Ionicons name="add" color="black" style={styles.icon} />
         </TouchableOpacity>
       </View>
-    </>
+    </ScreenWrapper>
   );
 };
 
