@@ -62,6 +62,17 @@ export const styles = StyleSheet.create({
   saveImage: {
     height: 230,
   },
+  switch: {
+    marginLeft: spacing.base,
+    transform: [{ scaleX: 1.8 }, { scaleY: 1.8 }],
+  },
+  switchIcon: {
+    marginLeft: spacing.sm,
+  },
+  themeContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   title: {
     color: colors.success,
     fontSize: 22,
