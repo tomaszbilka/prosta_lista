@@ -1,9 +1,9 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-import TabMenu from "components/Menu/TabMenu";
-import ScreenWrapper from "components/ScreenWrapper";
-import UserSettings from "components/UserSettings";
 import Onboarding from "components/UserSettings/Onboarding";
+import ScreenWrapper from "components/ScreenWrapper";
+import TabMenu from "components/Menu/TabMenu";
+import UserSettings from "components/UserSettings";
 
 const Settings = () => {
   const Tab = createMaterialTopTabNavigator();

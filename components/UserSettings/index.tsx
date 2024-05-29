@@ -6,19 +6,17 @@ import CountryFlag from "react-native-country-flag";
 import { getInitLocale, storeNewLocale } from "i18n/locales/utils";
 import { LOCALE } from "utils";
 import { styles } from "./styles";
+import { useIsMount } from "hooks/useIsMount";
 
 import type { TLocale } from "utils/types";
 
 const UserSettings = () => {
   const [locale, setLocale] = useState<TLocale>(LOCALE.pl);
   const { t, i18n } = useTranslation();
+  const isMount = useIsMount();
 
-  const changeLocaleHandler = async () => {
-    setLocale((prev) => {
-      const newLocale = prev === LOCALE.pl ? LOCALE.en : LOCALE.pl;
-      i18n.changeLanguage(newLocale);
-      return newLocale;
-    });
+  const changeLocaleHandler = () => {
+    setLocale((prev) => (prev === LOCALE.pl ? LOCALE.en : LOCALE.pl));
   };
 
   useEffect(() => {
@@ -30,10 +28,13 @@ const UserSettings = () => {
   }, []);
 
   useEffect(() => {
-    const saveLocale = async () => {
-      await storeNewLocale(locale);
-    };
-    saveLocale();
+    if (isMount) {
+      i18n.changeLanguage(locale);
+      const saveLocale = async () => {
+        await storeNewLocale(locale);
+      };
+      saveLocale();
+    }
   }, [locale]);
 
   return (
