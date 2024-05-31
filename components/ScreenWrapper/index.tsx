@@ -1,21 +1,27 @@
 import { SafeAreaView } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { useTheme } from "@react-navigation/native";
 
 import type { ReactNode } from "react";
 
-import { colors } from "components/styles/colors";
-
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 
 type TProps = {
   children: ReactNode;
 };
 
 const ScreenWrapper = ({ children }: TProps) => {
+  const { colors, dark } = useTheme();
+
+  const styles = createStyles(colors);
+
   return (
     <SafeAreaView style={styles.container}>
       {children}
-      <ExpoStatusBar style="light" backgroundColor={colors.black} />
+      <ExpoStatusBar
+        style={dark ? "light" : "dark"}
+        backgroundColor={colors.background}
+      />
     </SafeAreaView>
   );
 };

@@ -6,11 +6,16 @@ const darkTheme = {
   dark: true,
   colors: {
     ...DefaultTheme.colors,
-    background: colors.black,
-    text: colors.white,
-    border: colors.white,
     accent: colors.accent,
+    background: colors.black,
+    black: colors.black,
+    border: colors.white,
+    disabled: colors.disabled,
+    secondary: colors.secondary,
+    success: colors.success,
+    text: colors.white,
     warning: colors.warning,
+    white: colors.white,
   },
 };
 

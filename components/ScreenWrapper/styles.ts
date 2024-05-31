@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 
-import { colors } from "components/styles/colors";
+import type { Theme } from "@react-navigation/native";
 
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.black,
-  },
-});
+export const createStyles = (colors: Theme["colors"]) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+  });

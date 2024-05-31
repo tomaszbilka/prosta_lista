@@ -1,11 +1,11 @@
-import { Text, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { Text, TouchableOpacity } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 import type { Dispatch, SetStateAction } from "react";
 
-import { colors } from "components/styles/colors";
+import { createStyles } from "./styles";
 import { deleteItemAction } from "../utils";
-import { styles } from "./styles";
 
 import type { TUserList } from "../types";
 
@@ -17,6 +17,9 @@ type TProps = {
 };
 
 const ShowItem = ({ id, setIsEdit, setList, title }: TProps) => {
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
+
   const deleteItemHandler = () => deleteItemAction({ id, setList });
 
   const editItemHandler = () => {

@@ -1,14 +1,16 @@
 import React from "react";
 import { Image, Text, View } from "react-native";
-import { ScrollView, StyleSheet } from "react-native";
-import { useTranslation } from "react-i18next";
 import { Ionicons } from "@expo/vector-icons";
+import { ScrollView, StyleSheet } from "react-native";
+import { useTheme } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
-import { styles } from "./styles";
-import { colors } from "components/styles/colors";
+import { createStyles } from "./styles";
 
 const Onboarding = () => {
   const { t } = useTranslation("onboarding");
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
 
   return (
     <ScrollView>

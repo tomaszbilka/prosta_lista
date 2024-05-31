@@ -1,15 +1,17 @@
 import { StyleSheet } from "react-native";
 
-import { colors } from "components/styles/colors";
+import type { ExtendedTheme } from "@react-navigation/native";
+
 import { spacing } from "components/styles/spacing";
 
-export const styles = StyleSheet.create({
-  empty: {
-    marginTop: spacing.lg,
-  },
-  emptyText: {
-    color: colors.white,
-    fontSize: 20,
-    textAlign: "center",
-  },
-});
+export const createStyles = (colors: ExtendedTheme["colors"]) =>
+  StyleSheet.create({
+    empty: {
+      marginTop: spacing.lg,
+    },
+    emptyText: {
+      color: colors.text,
+      fontSize: 20,
+      textAlign: "center",
+    },
+  });

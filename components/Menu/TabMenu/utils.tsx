@@ -3,13 +3,13 @@ import { Entypo } from "@expo/vector-icons";
 
 import { colors } from "components/styles/colors";
 
-export const getTabIcon = (routeName: string, isFocused: boolean) => {
+export const getTabIcon = (routeName: string, dark: boolean) => {
   switch (routeName) {
     case "UserList":
       return (
         <FontAwesome
-          color={isFocused ? colors.success : colors.white}
-          name="list-ul"
+          color={dark ? colors.white : colors.black}
+          name="shopping-cart"
           size={24}
         />
       );
@@ -17,8 +17,8 @@ export const getTabIcon = (routeName: string, isFocused: boolean) => {
     case "TodoList":
       return (
         <FontAwesome
-          color={isFocused ? colors.success : colors.white}
-          name="shopping-cart"
+          color={dark ? colors.white : colors.black}
+          name="list-ul"
           size={24}
         />
       );
@@ -26,7 +26,7 @@ export const getTabIcon = (routeName: string, isFocused: boolean) => {
     case "Settings":
       return (
         <FontAwesome
-          color={isFocused ? colors.success : colors.white}
+          color={dark ? colors.white : colors.black}
           name="wrench"
           size={24}
         />
@@ -35,7 +35,7 @@ export const getTabIcon = (routeName: string, isFocused: boolean) => {
     case "Manual":
       return (
         <Entypo
-          color={isFocused ? colors.success : colors.white}
+          color={dark ? colors.white : colors.black}
           name="help"
           size={24}
         />

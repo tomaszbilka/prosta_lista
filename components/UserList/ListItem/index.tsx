@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 import type { Dispatch, SetStateAction } from "react";
 
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 import EditItem from "./EditItem";
 import ShowItem from "./ShowItem";
 
@@ -17,6 +18,8 @@ type TProps = {
 
 const ListItem = ({ id, setList, title }: TProps) => {
   const [isEdit, setIsEdit] = useState(false);
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
 
   return (
     <View

@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View, Text, TouchableOpacity, Switch } from "react-native";
 import CountryFlag from "react-native-country-flag";
+import { useTheme } from "@react-navigation/native";
 
-import { colors } from "components/styles/colors";
 import { getInitLocale, storeNewLocale } from "i18n/locales/utils";
 import { LOCALE } from "utils";
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 import { useIsMount } from "hooks/useIsMount";
 import { useThemeContext } from "utils/theme/themeContext";
 
@@ -16,8 +16,10 @@ import type { TLocale } from "utils/types";
 const UserSettings = () => {
   const [locale, setLocale] = useState<TLocale>(LOCALE.pl);
   const { t, i18n } = useTranslation();
+  const { colors } = useTheme();
   const isMount = useIsMount();
 
+  const styles = createStyles(colors);
   const ctx = useThemeContext();
 
   const isDarkTheme = ctx?.isDarkTheme;
@@ -76,7 +78,7 @@ const UserSettings = () => {
           value={isDarkTheme}
           onValueChange={toogleTheme}
           thumbColor={colors.success}
-          trackColor={{ false: colors.black, true: colors.white }}
+          trackColor={{ false: colors.border, true: colors.border }}
         />
       </View>
     </View>

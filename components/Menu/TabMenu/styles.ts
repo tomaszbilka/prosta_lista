@@ -1,48 +1,32 @@
 import { StyleSheet, StatusBar } from "react-native";
 
-import { colors } from "components/styles/colors";
+import type { ExtendedTheme } from "@react-navigation/native";
+
 import { spacing } from "components/styles/spacing";
 
-const topPadding = (StatusBar?.currentHeight || 30) + 4;
+const topPadding = (StatusBar?.currentHeight || 30) + spacing.xs;
 
-export const styles = StyleSheet.create({
-  container: {
-    paddingTop: topPadding,
-    marginBottom: spacing.xl,
-    flexDirection: "row",
-    justifyContent: "center",
-    borderWidth: 1,
-    borderBottomColor: colors.white,
-    position: "relative",
-  },
-  item: {
-    borderBottomColor: colors.white,
-    borderLeftColor: colors.white,
-    borderRightColor: colors.white,
-    borderWidth: 1,
-    padding: spacing.sm,
-    position: "absolute",
-    bottom: -58,
-    width: 60,
-    zIndex: 1,
-    backgroundColor: colors.black,
-  },
-  borderTop: {
-    borderTopColor: colors.white,
-    borderWidth: 1,
-  },
-  left: {
-    right: "50%",
-    borderBottomLeftRadius: spacing.base,
-  },
-  notFocused: {
-    backgroundColor: "#111111",
-  },
-  right: {
-    left: "50%",
-    borderBottomRightRadius: spacing.base,
-  },
-  iconContainer: {
-    zIndex: 9999,
-  },
-});
+export const createStyles = (colors: ExtendedTheme["colors"]) =>
+  StyleSheet.create({
+    container: {
+      flexDirection: "row",
+      justifyContent: "center",
+      marginBottom: spacing.base,
+      paddingTop: topPadding,
+    },
+    item: {
+      backgroundColor: colors.success,
+      borderColor: colors.success,
+      borderRadius: 30,
+      borderWidth: 1,
+      height: 60,
+      marginHorizontal: spacing.sm,
+      padding: spacing.sm,
+      width: 60,
+      zIndex: 1,
+    },
+    notFocused: {
+      borderColor: colors.border,
+      backgroundColor: colors.background,
+    },
+  });

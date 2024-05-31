@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Fontisto } from "@expo/vector-icons";
 import { Keyboard, TextInput, TouchableOpacity } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 import type { Dispatch, SetStateAction } from "react";
 
-import { colors } from "components/styles/colors";
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 import { updateItemAction } from "../utils";
 
 import type { TUserList } from "../types";
@@ -20,6 +20,8 @@ type TProps = {
 const EditItem = ({ id, setIsEdit, setList, title }: TProps) => {
   const [editedTitle, setEditedTitle] = useState(title);
   const refInput = useRef<TextInput>(null);
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
 
   const updateItemHandler = () => {
     updateItemAction({ id, editedTitle, setList });
