@@ -1,10 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
 import type { ReactNode } from "react";
 
 import darkTheme from "utils/theme/darkTheme";
 import lightTheme from "utils/theme/lightTheme";
+import { getInitTheme, storeNewTheme, THEMES } from "./utils";
 
 type ThemeContextProps = {
   isDarkTheme: boolean;
@@ -19,7 +20,8 @@ const ThemeContext = createContext<ThemeContextProps | null>({
 export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
-  const toggleTheme = () => {
+  const toggleTheme = async () => {
+    await storeNewTheme(isDarkTheme ? THEMES.light : THEMES.dark);
     setIsDarkTheme((prev) => !prev);
   };
 
@@ -27,6 +29,14 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
     isDarkTheme,
     toggleTheme,
   };
+
+  useEffect(() => {
+    const startTheme = async () => {
+      const newTheme = await getInitTheme();
+      setIsDarkTheme(newTheme);
+    };
+    startTheme();
+  }, []);
 
   return (
     <NavigationContainer
