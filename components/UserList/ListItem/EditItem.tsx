@@ -8,23 +8,24 @@ import type { Dispatch, SetStateAction } from "react";
 import { createStyles } from "./styles";
 import { updateItemAction } from "../utils";
 
-import type { TUserList } from "../types";
+import type { TListName, TUserList } from "../types";
 
 type TProps = {
   id: string;
+  listName: TListName;
   setIsEdit: Dispatch<SetStateAction<boolean>>;
   setList: Dispatch<SetStateAction<TUserList | []>>;
   title: string;
 };
 
-const EditItem = ({ id, setIsEdit, setList, title }: TProps) => {
+const EditItem = ({ id, listName, setIsEdit, setList, title }: TProps) => {
   const [editedTitle, setEditedTitle] = useState(title);
   const refInput = useRef<TextInput>(null);
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
   const updateItemHandler = () => {
-    updateItemAction({ id, editedTitle, setList });
+    updateItemAction({ id, listName, editedTitle, setList });
     setIsEdit(false);
   };
 

@@ -31,7 +31,7 @@ export const addItemAction = async ({
   list,
   newItem,
   setList,
-  listName = "list",
+  listName,
 }: TAddItemAction) => {
   if (newItem.length === 0) return;
 
@@ -50,7 +50,7 @@ export const addItemAction = async ({
 
 export const deleteItemAction = ({
   id,
-  listName = "list",
+  listName,
   setList,
 }: TDeletItemAction) => {
   setList((prev) => {
@@ -65,7 +65,7 @@ export const deleteItemAction = ({
 export const updateItemAction = ({
   id,
   editedTitle,
-  listName = "list",
+  listName,
   setList,
 }: TUpdateItemAction) => {
   setList((prevList) => {

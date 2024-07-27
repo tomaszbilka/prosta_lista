@@ -4,21 +4,21 @@ export type TUserList = { title: string; id: string }[];
 
 export type TAddItemAction = {
   list: TUserList | [];
-  listName?: TListName;
+  listName: TListName;
   newItem: string;
   setList: Dispatch<SetStateAction<TUserList | []>>;
 };
 
 export type TDeletItemAction = {
   id: string;
-  listName?: TListName;
+  listName: TListName;
   setList: Dispatch<SetStateAction<TUserList | []>>;
 };
 
 export type TUpdateItemAction = {
   editedTitle: string;
   id: string;
-  listName?: TListName;
+  listName: TListName;
   setList: Dispatch<SetStateAction<TUserList | []>>;
 };
 

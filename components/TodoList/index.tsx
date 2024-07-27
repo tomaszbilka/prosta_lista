@@ -1,12 +1,6 @@
-import { View, Text } from "react-native";
 import React from "react";
+import UserList from "components/UserList";
 
-const TodoList = () => {
-  return (
-    <View>
-      <Text>TodoList</Text>
-    </View>
-  );
-};
+const TodoList = () => <UserList listName="todo" />;
 
 export default TodoList;
