@@ -12,5 +12,6 @@ Instal expo on your phone, scane the QR code and start using app locally. You ca
 
 ### Preview
 
-![Screenshot_1707051826-portrait](https://github.com/tomaszbilka/prosta_lista/assets/74007928/659c2111-8b19-40e0-8353-d3994650e52f)
-![Screenshot_1707051839-portrait](https://github.com/tomaszbilka/prosta_lista/assets/74007928/91451620-0610-4486-b037-3a286ae8bf45)
+![preview1](https://github.com/user-attachments/assets/51132f49-b1eb-4de8-911a-1a73f8c72914)
+![preview2](https://github.com/user-attachments/assets/c6eaa742-142f-4559-a884-65ffb71507b2)
+![preview3](https://github.com/user-attachments/assets/ac314156-7bc4-4556-bda3-bc9fea7285f5)
