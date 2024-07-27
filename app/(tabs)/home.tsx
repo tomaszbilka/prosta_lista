@@ -2,8 +2,8 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 
 import ScreenWrapper from "components/ScreenWrapper";
 import TabMenu from "components/Menu/TabMenu";
-import TodoList from "components/TodoList";
-import ShopList from "components/ShopList";
+import TodoList from "screens/TodoList";
+import ShopList from "screens/ShopList";
 
 const Home = () => {
   const Tab = createMaterialTopTabNavigator();
