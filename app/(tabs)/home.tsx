@@ -2,8 +2,8 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 
 import ScreenWrapper from "components/ScreenWrapper";
 import TabMenu from "components/Menu/TabMenu";
-import TodoList from "components/TodoList";
-import UserList from "components/UserList";
+import TodoList from "screens/TodoList";
+import ShopList from "screens/ShopList";
 
 const Home = () => {
   const Tab = createMaterialTopTabNavigator();
@@ -12,21 +12,9 @@ const Home = () => {
     <ScreenWrapper>
       <Tab.Navigator
         initialRouteName="UserList"
-        screenOptions={{
-          tabBarActiveTintColor: "#e91e63",
-          tabBarLabelStyle: { fontSize: 12 },
-          tabBarStyle: {
-            backgroundColor: "black",
-            paddingTop: 20,
-          },
-          tabBarItemStyle: {
-            borderColor: "white",
-            borderWidth: 1,
-          },
-        }}
         tabBar={(props) => <TabMenu {...props} />}
       >
-        <Tab.Screen name="UserList" component={UserList} />
+        <Tab.Screen name="UserList" component={ShopList} />
         <Tab.Screen name="TodoList" component={TodoList} />
       </Tab.Navigator>
     </ScreenWrapper>
