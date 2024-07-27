@@ -5,6 +5,7 @@ import { getItem, storeItem } from "utils/storage";
 import type {
   TAddItemAction,
   TDeletItemAction,
+  TListName,
   TUpdateItemAction,
   TUserList,
 } from "./types";
@@ -30,31 +31,32 @@ export const addItemAction = async ({
   list,
   newItem,
   setList,
+  listName = "list",
 }: TAddItemAction) => {
   if (newItem.length === 0) return;
 
   const newListItem = normalizeListItem(newItem);
 
-  const storedList = (await getItem("list")) || [];
+  const storedList = (await getItem(listName)) || [];
 
   if (list.length === 0) {
-    await storeItem("list", newListItem.title);
+    await storeItem(listName, newListItem.title);
   } else {
-    await storeItem("list", `${storedList},${newListItem.title}`);
+    await storeItem(listName, `${storedList},${newListItem.title}`);
   }
 
   setList((prev) => [...prev, newListItem]);
 };
 
-export const deleteItemAction = ({ id, setList }: TDeletItemAction) => {
+export const deleteItemAction = ({
+  id,
+  listName = "list",
+  setList,
+}: TDeletItemAction) => {
   setList((prev) => {
-    const replaceOldList = async (denormalizeList: string) => {
-      await storeItem("list", denormalizeList);
-    };
-
     const filteredList = prev.filter((item) => item.id !== id);
     const denormalizeList = denormalizeListItems(filteredList);
-    replaceOldList(denormalizeList);
+    replaceOldList(listName, denormalizeList);
 
     return filteredList;
   });
@@ -63,9 +65,21 @@ export const deleteItemAction = ({ id, setList }: TDeletItemAction) => {
 export const updateItemAction = ({
   id,
   editedTitle,
+  listName = "list",
   setList,
 }: TUpdateItemAction) => {
-  setList((prevList) =>
-    prevList.map((item) => (item.id === id ? { id, title: editedTitle } : item))
-  );
+  setList((prevList) => {
+    const updatedList = prevList.map((item) =>
+      item.id === id ? { id, title: editedTitle } : item
+    );
+    const denormalizedList = denormalizeListItems(updatedList);
+
+    replaceOldList(listName, denormalizedList);
+
+    return updatedList;
+  });
+};
+
+const replaceOldList = async (listName: TListName, denormalizeList: string) => {
+  await storeItem(listName, denormalizeList);
 };

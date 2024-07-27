@@ -3,9 +3,9 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import type { ReactNode } from "react";
 
+import { getInitTheme, storeNewTheme, THEMES } from "./utils";
 import darkTheme from "utils/theme/darkTheme";
 import lightTheme from "utils/theme/lightTheme";
-import { getInitTheme, storeNewTheme, THEMES } from "./utils";
 
 type ThemeContextProps = {
   isDarkTheme: boolean;

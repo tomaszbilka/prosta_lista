@@ -1,5 +1,5 @@
-import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
 import { colors } from "components/styles/colors";
